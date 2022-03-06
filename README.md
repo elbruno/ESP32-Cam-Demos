@@ -5,7 +5,16 @@
 ![GitHub: elbruno](https://img.shields.io/github/followers/elbruno?style=social)
 
 This repo contains several demos and labs working with an ESP32 Cam board. I'm currently using a development board that avoid me the wiring and soldering.
-![ESP32-CAM-MB WiFi Development Board](img/esp32camdevelopmentboard.jpg)
+
+
+![ESP32-CAM-MB WiFi Development Board](img/esp32camdevboard.jpg)
+
+
+
+## Visual Studio Code and Platform IO
+
+For all these demos I use the [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) (VS Code extension) or the [PlatformIO command-line interface](https://platformio.org/install/cli) to deploy the application to your ESP32 Cam Arduino Board. 
+
 
 # Demos
 
