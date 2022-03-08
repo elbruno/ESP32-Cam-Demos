@@ -4,6 +4,7 @@
 //    Change Log  :
 //    - Starts a webserver on port 80
 //    - Creates an endpoint named [/flash] to flash the camera
+//    - Render a simple html page with a button to trigger the camera
 //    - Turn ON and OFF the Flash on an ESP32-CAM board
 //
 //    The MIT License (MIT)
@@ -46,15 +47,45 @@ const char *password = "12345678";
 // ledPin refers to ESP32-CAM GPIO 4 (flashlight)
 #define FLASH_GPIO_NUM 4
 
-// Create AsyncWebServer object on port 80
-AsyncWebServer server(80);
-
 void flashOnForNSeconds(int seconds)
 {
   digitalWrite(FLASH_GPIO_NUM, HIGH);
   delay(seconds * 1000);
   digitalWrite(FLASH_GPIO_NUM, LOW);
 }
+
+// Create AsyncWebServer object on port 80
+AsyncWebServer server(80);
+
+const char index_html[] PROGMEM = R"rawliteral(
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { text-align:center; }
+    .vert { margin-bottom: 10%; }
+    .hori{ margin-bottom: 0%; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>ESP32 CAM - Labs</h2>
+    <p>
+      <button onclick="triggerFlash()">Trigger Flash</button>      
+    </p>
+  </div>
+  <h4>Bruno Capuano - @elbruno</h4> 
+
+</body>
+<script>
+  var deg = 0;
+  function triggerFlash() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "/flash", true);
+    xhr.send();
+  }
+</script>
+</html>)rawliteral";
 
 void initAndConnectWifi()
 {
@@ -84,10 +115,14 @@ void setup()
 
   // initialize digital pin ledPin as an output
   pinMode(FLASH_GPIO_NUM, OUTPUT);
-  
-  flashOnForNSeconds(1);
 
   initAndConnectWifi();
+
+  flashOnForNSeconds(1);
+
+  // Route for root / web page
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send_P(200, "text/html", index_html); });
 
   // Route for trigger flash
   server.on("/flash", HTTP_GET, [](AsyncWebServerRequest *request)

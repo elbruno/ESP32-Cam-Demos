@@ -28,11 +28,30 @@ Source code available on [ESPCamFlashDemo folder](./ESPCamFlashDemo).
 
 ## WebServer to turn on the Flash with an HTTP Endpoint
 
-This project connects the ESP32 Cam board to a Wifi network and provides an HTTP endpoint to turn on the flash.
+This project 
+- Connects the ESP32 Cam board to a Wifi network
+- Starts a webserver on port 80
+- Creates an endpoint named [/flash] to flash the camera
+- Turn ON and OFF the Flash on an ESP32-CAM board
 
-![call and http endpoint and turn on the camera](img/httpendpointflashtriggered.jpg)
+![call and http endpoint and turn on the flash](img/httpendpointflashtriggered.jpg)
 
 Source code available on [ESPCamWebServer folder](./ESPCamWebServer).
+
+## WebServer hosting an HTML page to turn on the Flash 
+
+This project 
+- Connects the ESP32 Cam board to a Wifi networ
+- Starts a webserver on port 80
+- Creates an endpoint named [/flash] to flash the camera
+- Render a simple html page with a button to trigger the camera
+- Turn ON and OFF the Flash on an ESP32-CAM board
+
+
+![HTML Page with a button to turn on the flash](img/arduinoesp32camrenderingapage.jpg)
+
+Source code available on [ESPCamWebServerPage folder](./ESPCamWebServerPage).
+
 
 ## Additional Resources
 
