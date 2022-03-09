@@ -52,6 +52,15 @@ This project
 
 Source code available on [ESPCamWebServerPage folder](./ESPCamWebServerPage).
 
+## Take a photo and save it on the SD card
+
+This project 
+- Init the camera
+- Init the access to the SD card
+- Take a photo and save it on the SD card
+
+Source code available on [ESPCamPhotoSDCard folder](./ESPCamPhotoSDCard).
+
 
 ## Additional Resources
 
