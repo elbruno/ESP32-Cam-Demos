@@ -61,6 +61,15 @@ This project
 
 Source code available on [ESPCamPhotoSDCard folder](./ESPCamPhotoSDCard).
 
+## WebServer to take a photo every 5 seconds
+
+This project 
+- Starts a webserver on port 80
+- Takes a picture every 5 seconds
+- Creates an endpoint named [/photo] to return the last saved photo
+
+Source code available on [ESPCamWebSrvPhotoSavedSPIFFS folder](./ESPCamWebSrvPhotoSavedSPIFFS).
+
 
 ## Additional Resources
 
